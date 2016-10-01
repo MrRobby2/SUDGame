@@ -20,9 +20,20 @@ public class NPC {
         this.strength = strength;
     }
 
-    
     public String getName() {
         return name;
+    }
+
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void damageTaken(int hit) {
+        this.health = this.health - hit;
     }
 
 }

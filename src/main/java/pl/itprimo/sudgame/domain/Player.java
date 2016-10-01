@@ -50,4 +50,16 @@ public class Player {
         return this.currentLocation.getNPC(npcName);
     }
 
+    public boolean isAlive() {
+        return health > 0;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void damageTaken(int hit) {
+        this.health = this.health - hit;
+    }
+
 }

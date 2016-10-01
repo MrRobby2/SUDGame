@@ -1,6 +1,9 @@
 package pl.itprimo.sudgame;
 
+import java.util.Random;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pl.itprimo.sudgame.domain.Direction;
 import pl.itprimo.sudgame.domain.Location;
 import pl.itprimo.sudgame.domain.NPC;
@@ -70,6 +73,7 @@ public class Main {
                 break;
             case "kill":
                 attack(splitted[1], player);
+                break;
             default:
                 System.out.println("Unknown command");
                 break;
@@ -87,7 +91,7 @@ public class Main {
 
     private static void attack(String target, Player player) {
         NPC targetNPC = player.getNearbyNPC(target);
-        if( target != null ){
+        if (target != null) {
             beginCombat(player, targetNPC);
         } else {
             System.out.println("There's no one like that around.");
@@ -95,17 +99,42 @@ public class Main {
     }
 
     private static void beginCombat(Player player, NPC targetNPC) {
-        
-        int hit=0;
-        while( player.isAlive() && targetNPC.isAlive()){
-            
-            showHitMessage(player);
-            hit = calculateHitStrength(player);
-            targetNPC.damageTaken(hit);
-            showHitMessage();
-            hit = calculateHitStrength(targetNPC);
-            player.damageTaken(hit);
-            
+
+        int hit = 0;
+        while (player.isAlive() && targetNPC.isAlive()) {
+
+            try {
+                hit = calculateHitStrength(player.getStrength());
+                showHitMessage(targetNPC, hit);
+                targetNPC.damageTaken(hit);
+                Thread.sleep(2000);
+                hit = calculateHitStrength(targetNPC.getStrength());
+                showHitMessage(hit);
+                player.damageTaken(hit);
+                Thread.sleep(2000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+
+        if (player.isAlive()) {
+            System.out.println("You're victoruious!");
+        } else {
+            System.out.println("Try harder next time");
+        }
+    }
+
+    private static int calculateHitStrength(int strenght) {
+        Random r = new Random();
+        return strenght + r.nextInt(4);
+
+    }
+
+    private static void showHitMessage(NPC targetNPC, int hit) {
+        System.out.println("You hit " + targetNPC.getName() + " for " + hit + " damage.");
+    }
+
+    private static void showHitMessage(int hit) {
+        System.out.println("You're hit for " + hit + " damage.");
     }
 }
