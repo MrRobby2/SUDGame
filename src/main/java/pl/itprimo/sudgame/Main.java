@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pl.itprimo.sudgame.domain.Direction;
+import pl.itprimo.sudgame.domain.FightThread;
 import pl.itprimo.sudgame.domain.Location;
 import pl.itprimo.sudgame.domain.NPC;
 import pl.itprimo.sudgame.domain.Player;
@@ -100,41 +101,8 @@ public class Main {
 
     private static void beginCombat(Player player, NPC targetNPC) {
 
-        int hit = 0;
-        while (player.isAlive() && targetNPC.isAlive()) {
-
-            try {
-                hit = calculateHitStrength(player.getStrength());
-                showHitMessage(targetNPC, hit);
-                targetNPC.damageTaken(hit);
-                Thread.sleep(2000);
-                hit = calculateHitStrength(targetNPC.getStrength());
-                showHitMessage(hit);
-                player.damageTaken(hit);
-                Thread.sleep(2000);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        if (player.isAlive()) {
-            System.out.println("You're victoruious!");
-        } else {
-            System.out.println("Try harder next time");
-        }
-    }
-
-    private static int calculateHitStrength(int strenght) {
-        Random r = new Random();
-        return strenght + r.nextInt(4);
-
-    }
-
-    private static void showHitMessage(NPC targetNPC, int hit) {
-        System.out.println("You hit " + targetNPC.getName() + " for " + hit + " damage.");
-    }
-
-    private static void showHitMessage(int hit) {
-        System.out.println("You're hit for " + hit + " damage.");
+        FightThread ft = new FightThread(player, targetNPC);
+        Thread t = new Thread(ft);
+        t.start();
     }
 }

@@ -62,4 +62,8 @@ public class Player {
         this.health = this.health - hit;
     }
 
+    public boolean itThereNPCNearby(NPC targetNPC) {
+    return this.currentLocation.isThereNPC(targetNPC.getName());
+    }
+
 }
