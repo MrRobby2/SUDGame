@@ -1,9 +1,6 @@
 package pl.itprimo.sudgame;
 
-import java.util.Random;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import pl.itprimo.sudgame.domain.Direction;
 import pl.itprimo.sudgame.domain.FightThread;
 import pl.itprimo.sudgame.domain.Location;
