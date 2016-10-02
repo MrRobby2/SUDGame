@@ -1,9 +1,11 @@
 package pl.itprimo.sudgame.domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Location {
 
@@ -44,7 +46,9 @@ public class Location {
 
     private String getExitString() {
         String existString = "";
-        for (Direction direction : exit.keySet()) {
+        List<Direction> locationExits = new ArrayList<>(exit.keySet());
+        Collections.sort(locationExits);
+        for (Direction direction : locationExits) {
             existString += direction.getDirectionDescription() + " ";
         }
         return existString;
@@ -62,7 +66,7 @@ public class Location {
         return result;
     }
 
-    boolean isThereNPC(String npcName) {
+    public boolean isThereNPC(String npcName) {
         for (NPC npc : this.npcs) {
             if (npc.getName().equalsIgnoreCase(npcName)) {
                 return true;
@@ -72,7 +76,7 @@ public class Location {
         return false;
     }
 
-    NPC getNPC(String npcName) {
+    public NPC getNPC(String npcName) {
     for (NPC npc : this.npcs) {
             if (npc.getName().equalsIgnoreCase(npcName)) {
                 return npc;
