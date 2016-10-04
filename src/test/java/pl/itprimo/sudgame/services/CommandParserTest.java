@@ -18,6 +18,8 @@ public class CommandParserTest {
     Location mainLocation;
     Location northLocation;
     Player dummyPlayer;
+    CommandParser parser;
+    CommandParser spyParser;
 
     @Before
     public void initTest() {
@@ -27,24 +29,19 @@ public class CommandParserTest {
         dummyPlayer = new Player("Zenek");
         NPC ork = new NPC("ork");
         mainLocation.addNpc(ork);
+        parser = new CommandParser();
+        spyParser = Mockito.spy(parser);
+        dummyPlayer.setCurrentLocation(mainLocation);
     }
 
     @Test
     public void testParserMove() {
-        
-        CommandParser parser = new CommandParser();
-        CommandParser spyParser = Mockito.spy(parser);
-        dummyPlayer.setCurrentLocation(mainLocation);
         spyParser.actOnCommand("north", dummyPlayer);
         Mockito.verify(spyParser, times(1)).move(Direction.N, dummyPlayer);
     }
-    
+
     @Test
     public void testParserKill() {
-        
-        CommandParser parser = new CommandParser();
-        CommandParser spyParser = Mockito.spy(parser);
-        dummyPlayer.setCurrentLocation(mainLocation);
         spyParser.actOnCommand("kill ork", dummyPlayer);
         Mockito.verify(spyParser, times(1)).attack("ork", dummyPlayer);
     }
