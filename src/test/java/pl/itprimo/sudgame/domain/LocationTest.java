@@ -35,7 +35,7 @@ public class LocationTest {
     public void testDescription() {
 
         String description = mainLocation.getDescription();
-        String validDescription = "Short\nLong\nVisible exits: North South \nork ork2 ";
+        String validDescription = "Short\nLong\nVisible exits: North, South\nork, ork2";
         Assert.assertEquals("Compare description", validDescription, description);
     }
 

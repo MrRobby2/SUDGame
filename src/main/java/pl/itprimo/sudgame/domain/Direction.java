@@ -18,7 +18,8 @@ private String directionDescription;
         this.directionDescription = directionDescription;
     }
 
-    public String getDirectionDescription() {
+    @Override
+    public String toString() {
         return directionDescription;
     }
 

@@ -1,5 +1,6 @@
 package pl.itprimo.sudgame.domain;
 
+import com.google.common.base.Joiner;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -28,7 +29,7 @@ public class Location {
     public String getDescription() {
         return this.shortDescription + "\n" + this.longDescription
                 + "\n" + "Visible exits: " + getExitString()
-                + "\n" + getNPCString();
+                + "\n" + Joiner.on(", ").join(this.npcs);
     }
 
     public void addExit(Direction direction, Location location) {
@@ -45,25 +46,13 @@ public class Location {
     }
 
     private String getExitString() {
-        String existString = "";
         List<Direction> locationExits = new ArrayList<>(exit.keySet());
         Collections.sort(locationExits);
-        for (Direction direction : locationExits) {
-            existString += direction.getDirectionDescription() + " ";
-        }
-        return existString;
+        return Joiner.on(", ").join(locationExits);
     }
 
     public void addNpc(NPC npc) {
         this.npcs.add(npc);
-    }
-
-    private String getNPCString() {
-        String result = "";
-        for (NPC npc : this.npcs) {
-            result = result + npc.getName() + " ";
-        }
-        return result;
     }
 
     public boolean isThereNPC(String npcName) {
