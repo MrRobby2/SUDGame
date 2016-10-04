@@ -11,7 +11,7 @@ import pl.itprimo.sudgame.domain.Player;
  */
 public class CommandParser {
 
-    public static void actOnCommand(String command, Player player){
+    public void actOnCommand(String command, Player player){
         command = command.toLowerCase();
 
         String[] splitted = command.split(" ");
@@ -41,7 +41,8 @@ public class CommandParser {
                 break;
         }
     }
-    private static void move(Direction direction, Player player) {
+    
+    void move(Direction direction, Player player) {
         boolean hasMoved = player.move(direction);
         if (hasMoved) {
             System.out.println(player.getCurrentLocationDescription());
@@ -50,7 +51,7 @@ public class CommandParser {
         }
     }
 
-    private static void attack(String target, Player player) {
+    void attack(String target, Player player) {
         NPC targetNPC = player.getNearbyNPC(target);
         if (target != null) {
             beginCombat(player, targetNPC);
@@ -59,7 +60,7 @@ public class CommandParser {
         }
     }
 
-    private static void beginCombat(Player player, NPC targetNPC) {
+    private void beginCombat(Player player, NPC targetNPC) {
 
         FightThread ft = new FightThread(player, targetNPC);
         Thread t = new Thread(ft);

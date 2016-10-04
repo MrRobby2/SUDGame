@@ -10,6 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
         LocationRepository locationRepository = new LocationRepository();
+        CommandParser parser = new CommandParser();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("What's your name?");
@@ -24,7 +25,7 @@ public class Main {
         String command = "";
         while (!command.equals("quit")) {
             command = readPlayerInput(scanner);
-            CommandParser.actOnCommand(command, player);
+            parser.actOnCommand(command, player);
         }
 
         System.out.println("Bye!");
