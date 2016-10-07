@@ -1,7 +1,9 @@
 package pl.itprimo.sudgame.services;
 
+import pl.itprimo.sudgame.ClassicFightStrategy;
+import pl.itprimo.sudgame.FightStrategy;
 import pl.itprimo.sudgame.domain.Direction;
-import pl.itprimo.sudgame.domain.FightThread;
+import pl.itprimo.sudgame.FightThread;
 import pl.itprimo.sudgame.domain.NPC;
 import pl.itprimo.sudgame.domain.Player;
 
@@ -62,7 +64,8 @@ public class CommandParser {
 
     private void beginCombat(Player player, NPC targetNPC) {
 
-        FightThread ft = new FightThread(player, targetNPC);
+        FightStrategy fs = new ClassicFightStrategy();
+        FightThread ft = new FightThread(player, targetNPC, fs);
         Thread t = new Thread(ft);
         t.start();
     }

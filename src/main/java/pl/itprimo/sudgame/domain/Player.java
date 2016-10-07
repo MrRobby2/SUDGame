@@ -7,19 +7,29 @@ public class Player {
 
     private int health;
     private int strength;
+    private int agility;
 
     public Player(String name) {
         this.name = name;
         this.health = 100;
         this.strength = 5;
+        this.agility = 10;
     }
 
     public Player(String name, int health, int strength) {
         this.name = name;
         this.health = health;
         this.strength = strength;
+        this.agility = 10;
     }
 
+    public Player(String name, int health, int strength, int agility) {
+        this.name = name;
+        this.health = health;
+        this.strength = strength;
+        this.agility = agility;
+    }
+    
     public String getName() {
         return name;
     }

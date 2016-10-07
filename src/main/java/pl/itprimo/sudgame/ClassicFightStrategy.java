@@ -3,32 +3,29 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pl.itprimo.sudgame.domain;
+package pl.itprimo.sudgame;
 
 import java.util.Random;
+import pl.itprimo.sudgame.domain.NPC;
+import pl.itprimo.sudgame.domain.Player;
 
 /**
  *
  * @author Robert Kałat
  */
-public class FightThread implements Runnable {
+public class ClassicFightStrategy implements FightStrategy {
 
-    private Player player;
-    private NPC targetNPC;
-
-    public FightThread(Player player, NPC targetNPC) {
-        this.player = player;
-        this.targetNPC = targetNPC;
+    public ClassicFightStrategy() {
     }
-    
+
     @Override
-    public void run() {
+    public void fight(Player player, NPC targetNPC) {
         int hit = 0;
         while (player.isAlive() && targetNPC.isAlive()) {
 
             boolean targetStillHere = player.itThereNPCNearby(targetNPC);
-            
-            if(!targetStillHere) {
+
+            if (!targetStillHere) {
                 System.out.println("Your target is no longer here");
                 return;
             }
@@ -48,13 +45,13 @@ public class FightThread implements Runnable {
 
         if (player.isAlive() && !targetNPC.isAlive()) {
             System.out.println("You're victoruious!");
-        } else if (!player.isAlive() && targetNPC.isAlive()){
+        } else if (!player.isAlive() && targetNPC.isAlive()) {
             System.out.println("Try harder next time");
         } else {
             System.out.println("Run away!");
         }
     }
-    
+
     private int calculateHitStrength(int strenght) {
         Random r = new Random();
         return strenght + r.nextInt(4);
