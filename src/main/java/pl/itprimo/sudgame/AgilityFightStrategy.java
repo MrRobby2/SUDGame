@@ -1,20 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.itprimo.sudgame;
 
 import java.util.Random;
 import pl.itprimo.sudgame.domain.NPC;
 import pl.itprimo.sudgame.domain.Player;
 
-/**
- *
- * @author Robert Kałat
- */
 public class AgilityFightStrategy implements FightStrategy {
 
+    @Override
     public void fight(Player player, NPC targetNPC) {
         int hit = 0;
         while (player.isAlive() && targetNPC.isAlive()) {

@@ -1,7 +1,6 @@
 package pl.itprimo.sudgame.services;
 
 import pl.itprimo.sudgame.AgilityFightStrategy;
-import pl.itprimo.sudgame.ClassicFightStrategy;
 import pl.itprimo.sudgame.FightStrategy;
 import pl.itprimo.sudgame.domain.Direction;
 import pl.itprimo.sudgame.FightThread;
@@ -10,27 +9,29 @@ import pl.itprimo.sudgame.domain.Player;
 
 public class CommandParser {
 
-    public void actOnCommand(String command, Player player){
-        command = command.toLowerCase();
+    public void actOnCommand(String playerCommand, Player player) {
+        playerCommand = playerCommand.toLowerCase();
 
-        String[] splitted = command.split(" ");
+        String[] splitted = playerCommand.split(" ");
+
+        Command command = null;
 
         switch (splitted[0]) {
             case "n":
             case "north":
-                move(Direction.N, player);
+                command = new MoveCommand(Direction.N, player);
                 break;
             case "s":
             case "south":
-                move(Direction.S, player);
+                command = new MoveCommand(Direction.S, player);
                 break;
             case "e":
             case "east":
-                move(Direction.E, player);
+                command = new MoveCommand(Direction.E, player);
                 break;
             case "w":
             case "west":
-                move(Direction.W, player);
+                command = new MoveCommand(Direction.W, player);
                 break;
             case "kill":
                 attack(splitted[1], player);
@@ -39,14 +40,9 @@ public class CommandParser {
                 System.out.println("Unknown command");
                 break;
         }
-    }
-    
-    void move(Direction direction, Player player) {
-        boolean hasMoved = player.move(direction);
-        if (hasMoved) {
-            System.out.println(player.getCurrentLocationDescription());
-        } else {
-            System.out.println("you can't go that way");
+
+        if (command != null) {
+            command.execute();
         }
     }
 
@@ -66,5 +62,5 @@ public class CommandParser {
         Thread t = new Thread(ft);
         t.start();
     }
-     
+
 }
