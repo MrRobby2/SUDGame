@@ -3,39 +3,26 @@ package pl.itprimo.sudgame.domain;
 public class Player {
 
     private String name;
+    private Statistic stats;
     private Location currentLocation;
-
-    private int health;
-    private int strength;
-    private int agility;
 
     public Player(String name) {
         this.name = name;
-        this.health = 100;
-        this.strength = 5;
-        this.agility = 10;
+        this.stats = new Statistic(100, 5, 10);
     }
 
     public Player(String name, int health, int strength) {
         this.name = name;
-        this.health = health;
-        this.strength = strength;
-        this.agility = 10;
+        this.stats = new Statistic(health, strength, 10);
     }
 
     public Player(String name, int health, int strength, int agility) {
         this.name = name;
-        this.health = health;
-        this.strength = strength;
-        this.agility = agility;
-    }
-    
-    public String getName() {
-        return name;
+        this.stats = new Statistic(health, strength, agility);
     }
 
-    public int getAgility() {
-        return agility;
+    public String getName() {
+        return name;
     }
 
     public Location getCurrentLocation() {
@@ -65,19 +52,22 @@ public class Player {
     }
 
     public boolean isAlive() {
-        return health > 0;
+        return this.stats.getHealth() > 0;
     }
 
     public int getStrength() {
-        return strength;
+        return this.stats.getStrength();
     }
 
     public void damageTaken(int hit) {
-        this.health = this.health - hit;
+        this.stats.setHealth(this.stats.getHealth() - hit);
+    }
+
+    public int getAgility() {
+        return this.stats.getAgility();
     }
 
     public boolean itThereNPCNearby(NPC targetNPC) {
-    return this.currentLocation.isThereNPC(targetNPC.getName());
+        return this.currentLocation.isThereNPC(targetNPC.getName());
     }
-
 }

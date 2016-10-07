@@ -32,7 +32,7 @@ public class AgilityFightStrategy implements FightStrategy {
                     showHitMessage(targetNPC, hit);
                     targetNPC.damageTaken(hit);
                 } else {
-                    System.out.println("Your hit missed " + targetNPC.getName());
+                    System.out.println("Your hit misses " + targetNPC.getName());
                 }
 
                 Thread.sleep(2000);
@@ -42,7 +42,7 @@ public class AgilityFightStrategy implements FightStrategy {
                     showHitMessage(hit);
                     player.damageTaken(hit);
                 } else {
-                    System.out.println(targetNPC.getName()+ "'s hit missed you");
+                    System.out.println(targetNPC.getName()+ "'s hit misses you");
                 }
 
                 Thread.sleep(2000);
