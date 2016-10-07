@@ -1,5 +1,6 @@
 package pl.itprimo.sudgame.services;
 
+import pl.itprimo.sudgame.AgilityFightStrategy;
 import pl.itprimo.sudgame.ClassicFightStrategy;
 import pl.itprimo.sudgame.FightStrategy;
 import pl.itprimo.sudgame.domain.Direction;
@@ -7,10 +8,6 @@ import pl.itprimo.sudgame.FightThread;
 import pl.itprimo.sudgame.domain.NPC;
 import pl.itprimo.sudgame.domain.Player;
 
-/**
- *
- * @author Robert Kałat
- */
 public class CommandParser {
 
     public void actOnCommand(String command, Player player){
@@ -64,7 +61,7 @@ public class CommandParser {
 
     private void beginCombat(Player player, NPC targetNPC) {
 
-        FightStrategy fs = new ClassicFightStrategy();
+        FightStrategy fs = new AgilityFightStrategy();
         FightThread ft = new FightThread(player, targetNPC, fs);
         Thread t = new Thread(ft);
         t.start();

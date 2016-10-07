@@ -34,6 +34,10 @@ public class Player {
         return name;
     }
 
+    public int getAgility() {
+        return agility;
+    }
+
     public Location getCurrentLocation() {
         return currentLocation;
     }

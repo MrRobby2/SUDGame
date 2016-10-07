@@ -4,10 +4,6 @@ import pl.itprimo.sudgame.domain.Direction;
 import pl.itprimo.sudgame.domain.Location;
 import pl.itprimo.sudgame.domain.NPC;
 
-/**
- *
- * @author Robert Kałat
- */
 public class LocationRepository {
 
     private Location startLoc;

@@ -9,10 +9,6 @@ import pl.itprimo.sudgame.domain.Location;
 import pl.itprimo.sudgame.domain.NPC;
 import pl.itprimo.sudgame.domain.Player;
 
-/**
- *
- * @author Robert Kałat
- */
 public class CommandParserTest {
 
     Location mainLocation;

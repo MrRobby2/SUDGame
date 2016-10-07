@@ -1,9 +1,5 @@
 package pl.itprimo.sudgame.domain;
 
-/**
- *
- * @author Robert Kałat
- */
 public class NPC {
 
     private String name;
@@ -43,6 +39,10 @@ public class NPC {
 
     public void damageTaken(int hit) {
         this.health = this.health - hit;
+    }
+
+    public int getAgility() {
+        return agility;
     }
 
     @Override
