@@ -25,38 +25,21 @@ public class LookCommand implements Command {
     @Override
     public String execute() {
         String result = "";
-        //String item ="";
+        String item ="";
         
         NPC targetNPC = player.getNearbyNPC(targetName);
-        //item = player.getNearbyItem(targetName);
-        if (targetNPC != null) {
+        item = player.getNearbyItem(targetName);
+        if ( (targetNPC != null) && (item != null)) {
+            result = "NPC: " + targetNPC.getDescription()
+                    + "\nItem: " + item;
+        } else if (targetNPC != null) {
             result = targetNPC.getDescription();
+        } else if (item != null) {
+            result = item;
         } else {
             result = player.getCurrentLocationDescription();
         }
         return result;
     }
-    
-    /*
-    public String execute() {
-        String result = "";
-
-        
-            result = "You attack " + targetName;
-            beginCombat(player, targetNPC);
-        } else {
-            result = "There's no one like that around.";
-        }
-        return result;
-    }
-
-    void beginCombat(Player player, NPC targetNPC) {
-
-        FightStrategy fs = new AgilityFightStrategy();
-        FightThread ft = new FightThread(player, targetNPC, fs);
-        Thread t = new Thread(ft);
-        t.start();
-    }
-    */
     
 }

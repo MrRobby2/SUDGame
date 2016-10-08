@@ -14,11 +14,12 @@ public class Location {
     private Map<Direction, Location> exit;
     private List<NPC> npcs;
     private Map<String, String> locationItems;
-    
+
     public Location(String shortDescription, String longDescription) {
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
         this.exit = new HashMap<>();
+        this.locationItems = new HashMap<>();
         this.npcs = new ArrayList<>();
     }
 
@@ -58,19 +59,18 @@ public class Location {
     public void addItems(String itemName, String itemDescription) {
         this.locationItems.put(itemName, itemDescription);
     }
-            
+
     public boolean isThereNPC(String npcName) {
         for (NPC npc : this.npcs) {
             if (npc.getName().equalsIgnoreCase(npcName)) {
                 return true;
             }
-
         }
         return false;
     }
 
     public NPC getNPC(String npcName) {
-    for (NPC npc : this.npcs) {
+        for (NPC npc : this.npcs) {
             if (npc.getName().equalsIgnoreCase(npcName)) {
                 return npc;
             }
@@ -79,9 +79,8 @@ public class Location {
         return null;
     }
 
-  //  public String getItems(String itemName) {
-    //    return this.locationItems.get(itemName);
-    //}
-    
-    
+    public String getItems(String itemName) {
+        return this.locationItems.get(itemName);
+    }
+
 }

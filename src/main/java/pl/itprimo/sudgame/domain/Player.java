@@ -50,7 +50,7 @@ public class Player {
     public String getNearbyItem(String itemName) {
         return this.currentLocation.getItems(itemName);
     }
-    
+
     public boolean isAlive() {
         return this.stats.getHealth() > 0;
     }

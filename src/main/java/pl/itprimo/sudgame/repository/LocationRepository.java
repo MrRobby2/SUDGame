@@ -7,7 +7,7 @@ import pl.itprimo.sudgame.domain.NPC;
 public class LocationRepository {
 
     private Location startLoc;
-    
+
     public LocationRepository() {
         startLoc = new Location("Small room", "You're in small, dark room. Single bed standing next to the wall is only furniture in here");
         Location secondLocation = new Location("Dark corridor", "...");
@@ -15,11 +15,10 @@ public class LocationRepository {
         startLoc.addExit(Direction.N, secondLocation);
         secondLocation.addExit(Direction.S, startLoc);
 
-        NPC ork = new NPC("Ork","Great horrible ORK!", 50, 5);
+        NPC ork = new NPC("Ork", "Great horrible ORK!", 50, 5);
 
         startLoc.addNpc(ork);
-//        startLoc.addItems("dab","Potezne drzewo , ktorego pien ma conajmniej trzy metry srednicy");
-
+        startLoc.addItems("dab", "Potezne drzewo , ktorego pien ma conajmniej trzy metry srednicy");
     }
 
     public Location getStartLocation() {
