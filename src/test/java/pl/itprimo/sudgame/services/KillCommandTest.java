@@ -1,6 +1,7 @@
 package pl.itprimo.sudgame.services;
 
 import com.sun.org.apache.xalan.internal.lib.ExsltDatetime;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -20,14 +21,24 @@ public class KillCommandTest {
         ork = new NPC("ork");
         mainLocation.addNpc(ork);
     }
-    
+
     @Test
-    public void testKill(){
-        Player testPlayer = new Player("Robert");
+    public void beginCombatIfTargetIsThere() {
+        Player testPlayer = new Player("Test player");
         testPlayer.setCurrentLocation(mainLocation);
         KillCommand kill = new KillCommand("ork", testPlayer);
         KillCommand killSpy = Mockito.spy(kill);
         killSpy.execute();
-        Mockito.verify(killSpy, times(1)).beginCombat(testPlayer, ork);        
+        Mockito.verify(killSpy, times(1)).beginCombat(testPlayer, ork);
+    }
+
+    @Test
+    public void returnTargetNotThereInfoIfTargetIsNoOnLocation() {
+        Player testPlayer = new Player("Test player");
+        testPlayer.setCurrentLocation(mainLocation);
+        KillCommand kill = new KillCommand("goblin", testPlayer);
+        String result = kill.execute();
+        Assert.assertEquals("There's no one like that around.", result);
+        
     }
 }

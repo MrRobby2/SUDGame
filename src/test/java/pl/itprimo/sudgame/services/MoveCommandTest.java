@@ -24,12 +24,20 @@ public class MoveCommandTest {
     }
 
     @Test
-    public void testMova() {
-        Player p = new Player("Robert");
+    public void moveIfProperDirectionIsSend() {
+        Player p = new Player("Test player");
         p.setCurrentLocation(mainLocation);
         MoveCommand move = new MoveCommand(Direction.N, p);
-        move.execute();
-        Assert.assertEquals("Move to other location", northLocation, p.getCurrentLocation());
+        String result = move.execute();
+        Assert.assertEquals(northLocation.getDescription(), result);
     }
 
+    @Test
+    public void returnInfoIfThereIsNoLocationInGivenDirection(){
+        Player p = new Player("Test player");
+        p.setCurrentLocation(mainLocation);
+        MoveCommand move = new MoveCommand(Direction.E, p);
+        String result = move.execute();
+        Assert.assertEquals("you can't go that way", result);
+    }
 }
