@@ -15,9 +15,10 @@ public class LocationRepository {
         startLoc.addExit(Direction.N, secondLocation);
         secondLocation.addExit(Direction.S, startLoc);
 
-        NPC ork = new NPC("Ork", 50, 5);
+        NPC ork = new NPC("Ork","Great horrible ORK!", 50, 5);
 
         startLoc.addNpc(ork);
+//        startLoc.addItems("dab","Potezne drzewo , ktorego pien ma conajmniej trzy metry srednicy");
 
     }
 

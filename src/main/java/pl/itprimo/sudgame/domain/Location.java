@@ -13,7 +13,8 @@ public class Location {
     private String shortDescription;
     private Map<Direction, Location> exit;
     private List<NPC> npcs;
-
+    private Map<String, String> locationItems;
+    
     public Location(String shortDescription, String longDescription) {
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
@@ -54,6 +55,10 @@ public class Location {
         this.npcs.add(npc);
     }
 
+    public void addItems(String itemName, String itemDescription) {
+        this.locationItems.put(itemName, itemDescription);
+    }
+            
     public boolean isThereNPC(String npcName) {
         for (NPC npc : this.npcs) {
             if (npc.getName().equalsIgnoreCase(npcName)) {
@@ -73,4 +78,10 @@ public class Location {
         }
         return null;
     }
+
+  //  public String getItems(String itemName) {
+    //    return this.locationItems.get(itemName);
+    //}
+    
+    
 }

@@ -4,19 +4,23 @@ public class NPC {
 
     private String name;
     private Statistic stats;
+    private String description;
 
-    public NPC(String name) {
+    public NPC(String name, String description) {
         this.name = name;
+        this.description = description;
         this.stats = new Statistic(100, 5, 10);
     }
 
-    public NPC(String name, int health, int strength) {
+    public NPC(String name, String description, int health, int strength) {
         this.name = name;
+        this.description = description;
         this.stats = new Statistic(health, strength, 10);
     }
 
-    public NPC(String name, int health, int strength, int agility) {
+    public NPC(String name, String description, int health, int strength, int agility) {
         this.name = name;
+        this.description = description;
         this.stats = new Statistic(health, strength, agility);
     }
 
@@ -38,6 +42,10 @@ public class NPC {
 
     public int getAgility() {
         return this.stats.getAgility();
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     @Override

@@ -47,6 +47,10 @@ public class Player {
         return this.currentLocation.getNPC(npcName);
     }
 
+    public String getNearbyItem(String itemName) {
+        return this.currentLocation.getItems(itemName);
+    }
+    
     public boolean isAlive() {
         return this.stats.getHealth() > 0;
     }

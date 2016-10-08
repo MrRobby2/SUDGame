@@ -19,7 +19,7 @@ public class MoveCommandTest {
         mainLocation = new Location("Short", "Long");
         northLocation = new Location("Second", "long");
         mainLocation.addExit(Direction.N, northLocation);
-        NPC ork = new NPC("ork");
+        NPC ork = new NPC("ork","Great horrible ork");
         mainLocation.addNpc(ork);
     }
 

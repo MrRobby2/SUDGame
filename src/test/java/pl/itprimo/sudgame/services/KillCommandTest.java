@@ -1,6 +1,5 @@
 package pl.itprimo.sudgame.services;
 
-import com.sun.org.apache.xalan.internal.lib.ExsltDatetime;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,7 +17,7 @@ public class KillCommandTest {
     @Before
     public void initTest() {
         mainLocation = new Location("Short", "Long");
-        ork = new NPC("ork");
+        ork = new NPC("ork","Great horrible ork");
         mainLocation.addNpc(ork);
     }
 

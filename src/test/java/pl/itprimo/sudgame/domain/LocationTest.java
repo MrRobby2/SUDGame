@@ -16,8 +16,8 @@ public class LocationTest {
         Location southLocation = new Location("Third", "long");
         mainLocation.addExit(Direction.N, northLocation);
         mainLocation.addExit(Direction.S, southLocation);
-        NPC ork = new NPC("ork");
-        NPC secondOrk = new NPC("ork2");
+        NPC ork = new NPC("ork","Great horrible ork");
+        NPC secondOrk = new NPC("ork2","Great horrible ork");
         mainLocation.addNpc(ork);
         mainLocation.addNpc(secondOrk);
     }
