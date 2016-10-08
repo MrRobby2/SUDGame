@@ -5,8 +5,8 @@ import pl.itprimo.sudgame.domain.Player;
 
 public class MoveCommand implements Command {
 
-    Direction direction;
-    Player player;
+    private Direction direction;
+    private Player player;
 
     MoveCommand(Direction direction, Player player) {
         this.direction = direction;
@@ -14,13 +14,15 @@ public class MoveCommand implements Command {
     }
 
     @Override
-    public void execute() {
+    public String execute() {
+        String result = "";
         boolean hasMoved = player.move(direction);
         if (hasMoved) {
-            System.out.println(player.getCurrentLocationDescription());
+            result = player.getCurrentLocationDescription();
         } else {
-            System.out.println("you can't go that way");
+            result = "you can't go that way";
         }
+        return result;
     }
 
 }

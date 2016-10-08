@@ -34,7 +34,7 @@ public class CommandParser {
                 command = new MoveCommand(Direction.W, player);
                 break;
             case "kill":
-                attack(splitted[1], player);
+                command = new KillCommand(splitted[1], player);                
                 break;
             default:
                 System.out.println("Unknown command");
@@ -42,25 +42,7 @@ public class CommandParser {
         }
 
         if (command != null) {
-            command.execute();
+            System.out.println(command.execute());
         }
     }
-
-    void attack(String target, Player player) {
-        NPC targetNPC = player.getNearbyNPC(target);
-        if (target != null) {
-            beginCombat(player, targetNPC);
-        } else {
-            System.out.println("There's no one like that around.");
-        }
-    }
-
-    private void beginCombat(Player player, NPC targetNPC) {
-
-        FightStrategy fs = new AgilityFightStrategy();
-        FightThread ft = new FightThread(player, targetNPC, fs);
-        Thread t = new Thread(ft);
-        t.start();
-    }
-
 }
