@@ -42,7 +42,7 @@ public class CommandParser {
                     break;
                 }
             case "look at":
-                if (splitted[1].equals("atrrrr")) {
+                if (splitted[1].equals("at")) {
                     command = new LookCommand(splitted[2], player);
                 }
                 break;
