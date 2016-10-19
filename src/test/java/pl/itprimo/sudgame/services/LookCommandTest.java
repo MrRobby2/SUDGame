@@ -38,7 +38,7 @@ public class LookCommandTest {
         testPlayer.setCurrentLocation(mainLocation);
         ork = new NPC("TestOrk", "Great horrible ork");
         mainLocation.addNpc(ork);
-        LookCommand look = new LookCommand(testPlayer,"TestOrk");
+        LookCommand look = new LookCommand("TestOrk", testPlayer);
         String result = look.execute();
         Assert.assertEquals("Great horrible ork", result);
 
@@ -49,7 +49,7 @@ public class LookCommandTest {
         Player testPlayer = new Player("Test player");
         testPlayer.setCurrentLocation(mainLocation);
         mainLocation.addItems("dab", "szerszy opis drzewa");
-        LookCommand look = new LookCommand(testPlayer,"dab");
+        LookCommand look = new LookCommand("dab",testPlayer);
         String result = look.execute();
         Assert.assertEquals("szerszy opis drzewa", result);
 
@@ -62,7 +62,7 @@ public class LookCommandTest {
         ork = new NPC("222", "Great horrible ork");
         mainLocation.addNpc(ork);
         mainLocation.addItems("222", "szerszy opis drzewa");
-        LookCommand look = new LookCommand(testPlayer,"222");
+        LookCommand look = new LookCommand("222",testPlayer);
         String result = look.execute();
         Assert.assertEquals("NPC: Great horrible ork\nItem: szerszy opis drzewa", result);
 

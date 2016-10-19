@@ -17,7 +17,7 @@ public class LookCommand implements Command {
         this.player = player;
     }
 
-    public LookCommand(Player player, String targetName) {
+    public LookCommand(String targetName, Player player) {
         this.player = player;
         this.targetName = targetName;
     }
@@ -29,6 +29,7 @@ public class LookCommand implements Command {
         
         NPC targetNPC = player.getNearbyNPC(targetName);
         item = player.getNearbyItem(targetName);
+        
         if ( (targetNPC != null) && (item != null)) {
             result = "NPC: " + targetNPC.getDescription()
                     + "\nItem: " + item;

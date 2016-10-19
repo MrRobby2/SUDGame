@@ -34,7 +34,17 @@ public class CommandParser {
                 command = new MoveCommand(Direction.W, player);
                 break;
             case "kill":
-                command = new KillCommand(splitted[1], player);                
+                command = new KillCommand(splitted[1], player);
+                break;
+            case "look":
+                if (splitted.length == 1) {
+                    command = new LookCommand(player);
+                    break;
+                }
+            case "look at":
+                if (splitted[1] != "at") {
+                    command = new LookCommand(splitted[2], player);
+                }
                 break;
             default:
                 System.out.println("Unknown command");
