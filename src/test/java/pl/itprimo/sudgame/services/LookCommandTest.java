@@ -15,17 +15,17 @@ public class LookCommandTest {
 
     Location mainLocation;
     NPC ork;
+    Player testPlayer;
 
     @Before
     public void initTest() {
         mainLocation = new Location("Short", "Long");
-
+        testPlayer = new Player("Test player");
+        testPlayer.setCurrentLocation(mainLocation);
     }
 
     @Test
     public void returnDescription() {
-        Player testPlayer = new Player("Test player");
-        testPlayer.setCurrentLocation(mainLocation);
         LookCommand look = new LookCommand(testPlayer);
         String result = look.execute();
         Assert.assertEquals("Short\nLong\nVisible exits: \n", result);
@@ -34,8 +34,7 @@ public class LookCommandTest {
 
     @Test
     public void returnDescriptionNpcOnLocation() {
-        Player testPlayer = new Player("Test player");
-        testPlayer.setCurrentLocation(mainLocation);
+
         ork = new NPC("TestOrk", "Great horrible ork");
         mainLocation.addNpc(ork);
         LookCommand look = new LookCommand("TestOrk", testPlayer);
@@ -43,29 +42,25 @@ public class LookCommandTest {
         Assert.assertEquals("Great horrible ork", result);
 
     }
-   
+
     @Test
     public void returnDescriptionItemOnLocation() {
-        Player testPlayer = new Player("Test player");
-        testPlayer.setCurrentLocation(mainLocation);
         mainLocation.addItems("dab", "szerszy opis drzewa");
-        LookCommand look = new LookCommand("dab",testPlayer);
+        LookCommand look = new LookCommand("dab", testPlayer);
         String result = look.execute();
         Assert.assertEquals("szerszy opis drzewa", result);
 
     }
-    
+
     @Test
     public void returnDescriptionWhenNameOfItemAndNpcAreIdentical() {
-        Player testPlayer = new Player("Test player");
-        testPlayer.setCurrentLocation(mainLocation);
         ork = new NPC("222", "Great horrible ork");
         mainLocation.addNpc(ork);
         mainLocation.addItems("222", "szerszy opis drzewa");
-        LookCommand look = new LookCommand("222",testPlayer);
+        LookCommand look = new LookCommand("222", testPlayer);
         String result = look.execute();
         Assert.assertEquals("NPC: Great horrible ork\nItem: szerszy opis drzewa", result);
 
     }
-    
+
 }

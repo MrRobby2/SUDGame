@@ -1,15 +1,13 @@
 package pl.itprimo.sudgame.services;
 
-import pl.itprimo.sudgame.AgilityFightStrategy;
-import pl.itprimo.sudgame.FightStrategy;
 import pl.itprimo.sudgame.domain.Direction;
-import pl.itprimo.sudgame.FightThread;
-import pl.itprimo.sudgame.domain.NPC;
 import pl.itprimo.sudgame.domain.Player;
 
 public class CommandParser {
 
-    public void actOnCommand(String playerCommand, Player player) {
+    String result;
+
+    public String actOnCommand(String playerCommand, Player player) {
         playerCommand = playerCommand.toLowerCase();
 
         String[] splitted = playerCommand.split(" ");
@@ -35,15 +33,23 @@ public class CommandParser {
                 break;
             case "kill":
                 command = new KillCommand(splitted[1], player);
+                result = "CASE kill";
                 break;
             case "look":
                 if (splitted.length == 1) {
                     command = new LookCommand(player);
+                    result = "CASE look";
                     break;
                 }
             case "look at":
-                if (splitted[1].equals("at")) {
-                    command = new LookCommand(splitted[2], player);
+                if ( splitted[1].equals("at") ) {
+                    if ( splitted.length == 3 ) {
+                        command = new LookCommand(splitted[2], player);
+                        result = "CASE look at target";
+                    } else if (splitted.length == 2) {
+                        System.out.println("You didn't enter the target");
+                        result = "CASE look at without target";
+                    }
                 }
                 break;
             default:
@@ -51,8 +57,10 @@ public class CommandParser {
                 break;
         }
 
-        if (command != null) {
+        if (command
+                != null) {
             System.out.println(command.execute());
         }
+        return result;
     }
 }
