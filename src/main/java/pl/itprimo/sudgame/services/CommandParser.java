@@ -57,8 +57,7 @@ public class CommandParser {
                 break;
         }
 
-        if (command
-                != null) {
+        if (command != null) {
             System.out.println(command.execute());
         }
         return result;

@@ -1,6 +1,5 @@
 package pl.itprimo.sudgame.services;
 
-import pl.itprimo.sudgame.domain.Location;
 import pl.itprimo.sudgame.domain.NPC;
 import pl.itprimo.sudgame.domain.Player;
 
