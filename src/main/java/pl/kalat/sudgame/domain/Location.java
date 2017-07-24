@@ -1,4 +1,4 @@
-package pl.itprimo.sudgame.domain;
+package pl.kalat.sudgame.domain;
 
 import com.google.common.base.Joiner;
 import java.util.ArrayList;

@@ -1,5 +1,8 @@
-package pl.itprimo.sudgame.domain;
+package pl.kalat.sudgame.domain;
 
+import pl.kalat.sudgame.domain.Direction;
+import pl.kalat.sudgame.domain.Location;
+import pl.kalat.sudgame.domain.NPC;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

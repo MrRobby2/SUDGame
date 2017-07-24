@@ -1,10 +1,10 @@
-package pl.itprimo.sudgame.services;
+package pl.kalat.sudgame.services;
 
-import pl.itprimo.sudgame.AgilityFightStrategy;
-import pl.itprimo.sudgame.FightStrategy;
-import pl.itprimo.sudgame.FightThread;
-import pl.itprimo.sudgame.domain.NPC;
-import pl.itprimo.sudgame.domain.Player;
+import pl.kalat.sudgame.AgilityFightStrategy;
+import pl.kalat.sudgame.FightStrategy;
+import pl.kalat.sudgame.FightThread;
+import pl.kalat.sudgame.domain.NPC;
+import pl.kalat.sudgame.domain.Player;
 
 public class KillCommand implements Command {
 

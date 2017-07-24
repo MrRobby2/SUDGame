@@ -1,8 +1,8 @@
-package pl.itprimo.sudgame;
+package pl.kalat.sudgame;
 
 import java.util.Random;
-import pl.itprimo.sudgame.domain.NPC;
-import pl.itprimo.sudgame.domain.Player;
+import pl.kalat.sudgame.domain.NPC;
+import pl.kalat.sudgame.domain.Player;
 
 public class ClassicFightStrategy implements FightStrategy {
 

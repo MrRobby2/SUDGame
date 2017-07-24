@@ -1,9 +1,9 @@
-package pl.itprimo.sudgame;
+package pl.kalat.sudgame;
 
 import java.util.Scanner;
-import pl.itprimo.sudgame.domain.Player;
-import pl.itprimo.sudgame.repository.LocationRepository;
-import pl.itprimo.sudgame.services.CommandParser;
+import pl.kalat.sudgame.domain.Player;
+import pl.kalat.sudgame.repository.LocationRepository;
+import pl.kalat.sudgame.services.CommandParser;
 
 public class Main {
 
@@ -32,7 +32,10 @@ public class Main {
     }
 
     private static String readPlayerInput(Scanner scanner) {
-        System.out.println(">");
+        System.out.println(
+                "\n>>"
+                + "\n>Type ? for get lists command"
+                + "\n>");
         String command = scanner.nextLine();
         return command;
     }

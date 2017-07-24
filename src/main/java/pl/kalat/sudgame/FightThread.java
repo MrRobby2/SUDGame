@@ -1,7 +1,7 @@
-package pl.itprimo.sudgame;
+package pl.kalat.sudgame;
 
-import pl.itprimo.sudgame.domain.NPC;
-import pl.itprimo.sudgame.domain.Player;
+import pl.kalat.sudgame.domain.NPC;
+import pl.kalat.sudgame.domain.Player;
 
 public class FightThread implements Runnable {
 

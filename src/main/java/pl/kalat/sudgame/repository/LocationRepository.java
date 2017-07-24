@@ -1,8 +1,8 @@
-package pl.itprimo.sudgame.repository;
+package pl.kalat.sudgame.repository;
 
-import pl.itprimo.sudgame.domain.Direction;
-import pl.itprimo.sudgame.domain.Location;
-import pl.itprimo.sudgame.domain.NPC;
+import pl.kalat.sudgame.domain.Direction;
+import pl.kalat.sudgame.domain.Location;
+import pl.kalat.sudgame.domain.NPC;
 
 public class LocationRepository {
 

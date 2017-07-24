@@ -1,4 +1,4 @@
-package pl.itprimo.sudgame.services;
+package pl.kalat.sudgame.services;
 
 public interface Command {
 

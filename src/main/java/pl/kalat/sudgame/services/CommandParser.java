@@ -1,7 +1,7 @@
-package pl.itprimo.sudgame.services;
+package pl.kalat.sudgame.services;
 
-import pl.itprimo.sudgame.domain.Direction;
-import pl.itprimo.sudgame.domain.Player;
+import pl.kalat.sudgame.domain.Direction;
+import pl.kalat.sudgame.domain.Player;
 
 public class CommandParser {
 
